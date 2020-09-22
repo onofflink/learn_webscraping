@@ -12,3 +12,14 @@ if result.status_code == 200:
     soup = BeautifulSoup(result.content, "lxml")
 
 parameters = soup.findAll(name='a')
+
+
+"""
+links = soup.select('a')
+print(type(links), len(links))
+print(links)
+for link in links:
+    print(type(link), link)
+    print('_'*100)
+
+"""
