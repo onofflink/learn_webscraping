@@ -1,4 +1,4 @@
-import requests
+import requests, time
 from bs4 import BeautifulSoup
 
 # download wikipage
@@ -12,6 +12,12 @@ if result.status_code == 200:
     soup = BeautifulSoup(result.content, "lxml")
 
 parameters = soup.findAll(name='a')
+
+for parameter in parameters:
+    print(type(parameters), parameters)
+    sleep.time(1)
+    
+
 
 
 """
