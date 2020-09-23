@@ -1,7 +1,24 @@
 from bs4 import BeautifulSoup
 
 # from file
-path = 'datas/sample02.html'
+path = 'datas/sample03.html'
+
+with open(path) as fp:						# shared github
+    soup = BeautifulSoup(fp, features='lxml')
+    title_data = soup.find('h1')									# tag로 검색
+    print(type(title_data), title_data, title_data.string)
+    title_data = soup.find_all(id='h1_id_name')					# id로 검색
+    print(title_data, title_data[0].get_text())
+    title_data = soup.find_all('p', class_='public_class_name')	# tag와 class로 검색
+    print(title_data, title_data[0].attrs)
+    # [<p class="public_class_name" id="p01_id_name">웹페이지에서 ... 하는 것</p>]
+    # {'class': ['public_class_name'], 'id': 'p01_id_name'}
+    title_data = soup.find_all('p', attrs = {'align': 'center'})		# 속성:속성값으로 검색
+    print(title_data, title_data[0].string)
+    title_data = soup.find_all('a', href=True)					# 속성 존재 여부 검색
+    print(title_data, title_data[0].string)
+
+
 with open(path) as fp:
     soup = BeautifulSoup(fp, features='lxml')
     print(type(soup), soup.attrs, soup.getText())
